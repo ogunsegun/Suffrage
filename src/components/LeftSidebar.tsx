@@ -3,7 +3,7 @@ import { Plus } from 'lucide-react';
 
 const LeftSidebar = () => {
   return (
-    <div className="w-20 bg-indigo-950 h-full flex flex-col justify-between">
+    <div className="w-15 bg-indigo-950 h-full flex flex-col justify-between">
       <div>
         <div className="p-4 flex items-center justify-center">
           <div className="rounded-full bg-indigo-800 p-2">
