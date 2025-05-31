@@ -3,6 +3,7 @@ import {
   Search,
   Bell,
   MessageSquare,
+  SettingsIcon,
   Share2,
   PlusCircle,
   Settings,
@@ -14,7 +15,7 @@ import MessageList from './MessageList';
 import ActionButtons from './ActionButtons';
 
 const tabs = [
-  { label: '# Rules >', value: 'Rules' },
+  { label: '# General', value: 'Rules' },
   { label: 'Members', value: 'Members' },
   { label: 'Media', value: 'Media' },
   { label: 'Pins', value: 'Pins' },
@@ -29,7 +30,7 @@ const MainContent: React.FC = () => {
       case 'Rules':
         return (
           <div>
-            <div className="flex-1 overflow-y-auto px-4 py-6">
+            <div className="flex-1 overflow-x scrollbar-thin scrollbar-thumb-indigo-600 scrollbar-track-indigo-300 py-4 py-6">
               <div className="text-center mb-8">
                 <h2 className="text-lg text-indigo-200">
                   The independent, non-partisan agency responsible for
@@ -89,9 +90,8 @@ const MainContent: React.FC = () => {
 
               <MessageList />
             </div>
-
-            <div className="bg-indigo-900 p-4 border-t border-indigo-800">
-              <div className="bg-indigo-800 rounded-lg flex items-center p-2">
+            {/* <div className="fixed bottom-0 w-50 bg-indigo-900 p-4 border-t border-indigo-800 z-10">
+              <div className="max-w-4xl mx-auto bg-indigo-800 rounded-lg flex items-center p-2">
                 <input
                   type="text"
                   placeholder="Message #general"
@@ -99,7 +99,7 @@ const MainContent: React.FC = () => {
                 />
                 <ActionButtons />
               </div>
-            </div>
+            </div> */}{' '}
           </div>
         );
       case 'Members':
@@ -173,6 +173,21 @@ const MainContent: React.FC = () => {
               <span>12.3M Voters</span>
               <span className="mx-2">|</span>
               <span>General Election</span>
+              <span className="mx-2">|</span>
+              <span>
+                <SettingsIcon className="w-4 h-4 cursor-pointer hover:text-gray-300" />
+              </span>
+              <span className="mx-2">|</span>
+              <span>
+                <div className="flex items-center bg-indigo-700 rounded-full px-3 py-1">
+                  <Search className="w-4 h-4 text-gray-300" />
+                  <input
+                    type="text"
+                    placeholder="Search INEC"
+                    className="bg-transparent text-sm text-white placeholder-gray-400 px-2 focus:outline-none"
+                  />
+                </div>
+              </span>
             </div>
           </div>
         </div>
@@ -194,12 +209,35 @@ const MainContent: React.FC = () => {
                 </button>
               ))}
             </div>
+            <div className="flex items-center gap-3 ml-auto">
+              <div className="flex items-center bg-indigo-700 rounded-full px-2 py-1 h-8">
+                <Search className="w-3 h-3 text-gray-300" />
+                <input
+                  type="text"
+                  placeholder="Search General"
+                  className="bg-transparent text-xs text-white placeholder-gray-400 px-1 focus:outline-none w-24 sm:w-32"
+                />
+              </div>
+              <Bell className="w-4 h-4 cursor-pointer hover:text-gray-300" />
+              <Settings className="w-4 h-4 cursor-pointer hover:text-gray-300" />
+            </div>
           </div>
         </div>
       </header>
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto">{renderTabContent()}</div>
+
+      <div className="bg-indigo-900 p-4 border-t border-indigo-800">
+        <div className="bg-indigo-800 rounded-lg flex items-center p-2">
+          <input
+            type="text"
+            placeholder="Message #general"
+            className="flex-1 bg-transparent border-none outline-none text-white px-2"
+          />
+          <ActionButtons />
+        </div>
+      </div>
     </div>
   );
 };
